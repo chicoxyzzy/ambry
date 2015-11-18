@@ -1,0 +1,32 @@
+{
+  "name": "ambry",
+  "version": "0.1.0",
+  "description": "WebStorage wrapper that makes your life easier",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src | uglifyjs --screw-ie8 --compress --mangle --output index.js",
+    "lint": "eslint src/ *.js",
+    "preversion": "npm run lint && npm test",
+    "postversion": "git push origin HEAD && git push --tags",
+    "test": "tape ./src/**/__test__/*.test.js",
+    "postinstall": "npm dedupe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chicoxyzzy/ambry.git"
+  },
+  "keywords": [
+    "WebStorage",
+    "localStorage",
+    "sessionStorage",
+    "multibrowser"
+  ],
+  "author": "chicoxyzzy",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.1.18",
+    "babel-preset-es2015": "^6.1.18",
+    "eslint-config-airbnb": "^1.0.0",
+    "uglify-js": "^2.6.1"
+  }
+}
