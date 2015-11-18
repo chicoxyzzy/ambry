@@ -18,12 +18,6 @@ class Storage {
     this._schemeVersion = this.getItem(SCHEME_VERSION_FIELD_NAME);
     this.setSchemeVersion(schemeVersion);
   }
-  setSchemeVersion(version) {
-    if (this._schemeVersion !== version) {
-      this.clear();
-      this.setItem(SCHEME_VERSION_FIELD_NAME, version);
-    }
-  }
   static isQuotaExceeded(e) {
     if (e) {
       if (e.code) {
@@ -42,6 +36,12 @@ class Storage {
       }
     }
     return false;
+  }
+  setSchemeVersion(version) {
+    if (this._schemeVersion !== version) {
+      this.clear();
+      this.setItem(SCHEME_VERSION_FIELD_NAME, version);
+    }
   }
   clear() {
     try {
@@ -86,8 +86,6 @@ class Storage {
   }
 }
 
-function createStorage({ type = 'localStorage', namespace = null, schemeVersion = null, clearOnExceed = true }) {
+export function createStorage({ type = 'localStorage', namespace = null, schemeVersion = null, clearOnExceed = true }) {
   return new Storage({ type, schemeVersion, namespace, clearOnExceed });
 }
-
-export default createStorage;
