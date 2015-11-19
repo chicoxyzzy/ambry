@@ -10,7 +10,7 @@ class Storage {
       storage.setItem(test, test);
       storage.removeItem(test);
     } catch (e) {
-      throw new Error(`No storage of type ${type} available in this environment.`);
+      console.warn(`No storage of type ${type} available in this environment.`);
     }
     this._storage = storage;
     this._prefix = namespace ? `${namespace}.` : '';
