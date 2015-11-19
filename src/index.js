@@ -14,6 +14,10 @@ class StorageDummy {
 
 const subscribes = {};
 
+// TODO fixes for IE10-11
+// ref http://caniuse.com/#feat=namevalue-storage
+// known issues 6, 7
+
 class Storage extends StorageDummy {
   constructor({ storage, namespace, schemeVersion, clearOnExceed }) {
     super();
