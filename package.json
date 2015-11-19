@@ -1,6 +1,6 @@
 {
   "name": "ambry",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "WebStorage wrapper that makes your life easier",
   "main": "index.js",
   "scripts": {
