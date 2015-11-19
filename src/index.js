@@ -2,7 +2,7 @@ const FIREFOX_ERROR_NAME = 'NS_ERROR_DOM_QUOTA_REACHED';
 const IE8_ERROR_MAGIC_NUMBER = -2147024882;
 const SCHEME_VERSION_FIELD_NAME = '__schemeVersion';
 
-class StrageDummy {
+class StorageDummy {
   static isQuotaExceeded() {}
   setSchemeVersion() {}
   clear() {}
@@ -14,7 +14,7 @@ class StrageDummy {
 
 const subscribes = {};
 
-class Storage extends StrageDummy {
+class Storage extends StorageDummy {
   constructor({ storage, namespace, schemeVersion, clearOnExceed }) {
     super();
     this._storage = storage;
@@ -135,7 +135,7 @@ export function createStorage({
   }
   if (doNotThrow) {
     console.warn(`WebStorages are not available in current environment.`);
-    return new StrageDummy();
+    return new StorageDummy();
   }
   throw new Error(`WebStorages are not available in current environment.`);
 }
