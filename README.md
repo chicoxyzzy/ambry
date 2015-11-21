@@ -11,7 +11,7 @@ npm install --save ambry
 
 ### Creating storage
 
-```js
+```javascript
 import { createStorage } from 'ambry';
 
 const storage = createStorage(config);
@@ -26,7 +26,7 @@ const storage = createStorage(config);
 
 ### Setting new value
 
-```js
+```javascript
 storage.setItem(field, value);
 ```
 
@@ -34,7 +34,7 @@ If quota is exceeded and you have `clearOnError` set to `true` then storage will
 
 ### Getting value
 
-```js
+```javascript
 storage.getItem(field);
 ```
 
@@ -42,19 +42,19 @@ If value for that field can't be parsed and `clearOnError` is set to `true` then
 
 ### Removing value
 
-```js
+```javascript
 storage.removeItem(field);
 ```
 
 ### Clearing storage
 
-```js
+```javascript
 storage.clear();
 ```
 
 ### Changing scheme version
 
-```js
+```javascript
 storage.setSchemeVersion(version);
 ```
 
@@ -62,7 +62,7 @@ This will clear storage if previous version is not strictly equal to new version
 
 ### Subscribing to storage changes
 
-```js
+```javascript
 const unsubscribe = storage.subscribe(handler);
 ```
 
