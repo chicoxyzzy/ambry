@@ -2,6 +2,7 @@
 
 Ambry is WebStorage wrapper that makes your life easier. It's target is to improve developer experience and to cover inconsistency in browser implemetations.
 Using Ambry you can create storages with namespaces, control scheme version and subscribe to particular storage.
+
 Tests are powered by [BrowserStack](https://www.browserstack.com) — cool cross browser testing tool.
 
 ### Installation
