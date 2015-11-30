@@ -26,7 +26,7 @@ const storage = createStorage(config);
 - `clearOnError` - if `true` clears field when parsing for `getItem()` fails or when `setItem()` is impossible because of storage quota has exceede (Default value: `true`)
 - `doNotThrow` - if `true` then creates dummy storage instead of throwing error. Dummy storage has all methods that standard storage has (Default value: `true`)
 
-### Setting new value
+### Setting new value or updating value
 
 ```javascript
 storage.setItem(field, value);
