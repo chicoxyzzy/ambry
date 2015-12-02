@@ -1,4 +1,4 @@
-# Ambry
+# Ambry [![Build Status](https://travis-ci.org/chicoxyzzy/ambry.svg?branch=master)](https://travis-ci.org/chicoxyzzy/ambry)
 
 Ambry is WebStorage wrapper that makes your life easier. It's target is to improve developer experience and to cover inconsistency in browser implemetations.
 Using Ambry you can create storages with namespaces, control scheme version and subscribe to particular storage.
