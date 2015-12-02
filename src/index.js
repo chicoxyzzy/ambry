@@ -14,6 +14,19 @@ class StorageDummy {
 }
 
 const subscribes = {};
+let isEventListenerRegistered = false;
+
+function storageChangeHandler({ key, oldValue, newValue }) {
+  Object.keys(subscribes).forEach(prefix => {
+    if (key.indexOf(prefix) === 0) {
+      subscribes[prefix].forEach(handler => handler(
+        key.replace(prefix, ''),
+        JSON.parse(oldValue),
+        JSON.parse(newValue)
+      ));
+    }
+  });
+}
 
 function isQuotaExceeded(e) {
   if (e) {
@@ -107,9 +120,17 @@ class Storage extends StorageDummy {
     }
     const subscribesOfNamespace = subscribes[this._prefix];
     subscribesOfNamespace.push(fn);
+    if (!isEventListenerRegistered) {
+      window.addEventListener('storage', storageChangeHandler, false);
+      isEventListenerRegistered = true;
+    }
     return function unsubscribe() {
       const index = subscribesOfNamespace.indexOf(fn);
-      subscribes.splice(index, 1);
+      subscribesOfNamespace.splice(index, 1);
+      if (Object.keys(subscribes).every(prefix => subscribes[prefix].length === 0)) {
+        window.removeEventListener('storage', storageChangeHandler, false);
+        isEventListenerRegistered = false;
+      }
     };
   }
 }
@@ -124,18 +145,6 @@ function isStorageAvailable(storage) {
     return false;
   }
 }
-
-window.addEventListener('storage', ({ key, oldValue, newValue }) => {
-  Object.keys(subscribes).forEach(prefix => {
-    if (key.indexOf(prefix) === 0) {
-      subscribes[prefix].forEach(subscribe => subscribe(
-        key.replace(prefix, ''),
-        JSON.parse(oldValue),
-        JSON.parse(newValue)
-      ));
-    }
-  });
-}, false);
 
 export function createStorage({
   type = 'localStorage',
