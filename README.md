@@ -22,8 +22,8 @@ const storage = createStorage(config);
 `config` consists of:
 - `type` — should be `'localStorage'` or `'sessionStorage'` (Default value: `'localStorage'`)
 - `namespace` - prefix for your storage in storage key field (Default value: `null`)
-- `schemeVersion` - your scheme version wich is useful in cases your storage structure could change over time (Default value: `null`)
-- `clearOnError` - if `true` clears field when parsing for `getItem()` fails or when `setItem()` is impossible because of storage quota has exceede (Default value: `true`)
+- `schemeVersion` - your scheme version which is useful in cases your storage structure could change over time (Default value: `null`)
+- `clearOnError` - if `true` clears field when parsing for `getItem()` fails or when `setItem()` is impossible because of storage quota has exceeded (Default value: `true`)
 - `doNotThrow` - if `true` then creates dummy storage instead of throwing error. Dummy storage has all methods that standard storage has (Default value: `true`)
 
 ### Setting new value or updating value
